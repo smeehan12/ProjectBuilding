@@ -7,9 +7,8 @@
 #include "myFunctions.h"
 
 void myInfo(std::string info) {
-
+  // prints an info message
   std::cout << "myInfo :: " << info << std::endl;
-
   return;
 }
 

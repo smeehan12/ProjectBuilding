@@ -1,0 +1,25 @@
+CC=g++
+
+PROJECTINCLUDE=-I./MyProject
+ROOTINCLUDE=-I/Users/meehan/work/CernRoot/v6-18-02/build-v6-18-02-python3/include
+ROOTLIBRARY=-L/Users/meehan/work/CernRoot/v6-18-02/build-v6-18-02-python3/lib
+ROOTLIBS=-lCore -lHist -lRIO
+
+all: myProgram.exe
+
+myProgram.exe: myProgram.o ./src/myFunctions.o
+	$(CC) -std=c++11 -o myProgram.exe myProgram.o ./src/myFunctions.o \
+	$(PROJECTINCLUDE) $(ROOTINCLUDE) $(ROOTLIBRARY) $(ROOTLIBS)
+
+
+myProgram.o: myProgram.cxx 
+	$(CC) -std=c++11 -c -o myProgram.o myProgram.cxx \
+	$(PROJECTINCLUDE) $(ROOTINCLUDE) $(ROOTLIBRARY) $(ROOTLIBS)
+
+
+./src/myFunctions.o: ./src/myFunctions.cxx 
+	$(CC) -std=c++11 -c -o ./src/myFunctions.o ./src/myFunctions.cxx \
+	$(PROJECTINCLUDE) $(ROOTINCLUDE) $(ROOTLIBRARY) $(ROOTLIBS)
+
+clean:
+	rm myProgram.exe myProgram.o ./src/myFunctions.o

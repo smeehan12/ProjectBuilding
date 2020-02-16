@@ -4,9 +4,7 @@
 #include "myFunctions.h"
 
 int main() {
-
   myInfo("Starting");
-
 
   TFile *f = new TFile("fout.root","RECREATE");
 
@@ -17,7 +15,6 @@ int main() {
   }
 
   h->Write();
-
   f->Close();
 
   return(0);
